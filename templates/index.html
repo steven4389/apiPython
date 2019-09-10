@@ -14,12 +14,13 @@
       req.addEventListener("load", function() {
         if (req.status >= 200 && req.status < 400) {
           
-          console.log(req.response)
+          var obj = JSON.parse(req.response)
+          console.log(obj)
 
           TESTER = document.getElementById('tester');
           Plotly.plot( TESTER, [{
-          x: [1, 2, 3, 4, 5],
-          y: [1, 2, 4, 8, 16] }], {
+          x: obj[0],
+          y: obj[1] }], {
           margin: { t: 0 } } );
 
         } else {
